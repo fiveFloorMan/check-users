@@ -3,7 +3,6 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const routes = require('./routes/index')
 
-
 const app = express()
 const PORT = 3000
 

@@ -30,12 +30,13 @@ const users = [
 
 db.once('open', () => {
   console.log('userSeeder.js start running')
-  for(let i = 0 ; i < 5 ; i++){
+  for (let i = 0; i < 5; i++) {
     const user = users[i]
     User.create({
       firstName: user.firstName,
       email: user.email,
-      password: user.password})
+      password: user.password
+    })
   }
   console.log('userSeeder.js done')
 })

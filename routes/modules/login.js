@@ -13,12 +13,12 @@ router.post('/', (req, res) => {
   const email = req.body.email
   const password = req.body.password
   Users.findOne({ email, password })
-    .lean()  
+    .lean()
     .then(user => {
-      if(user === null){
-        return res.render('login', {errorMessage: 'email or password is error'})
+      if (user === null) {
+        return res.render('login', { errorMessage: 'email or password is error' })
       }
-      res.render('index',{ value : user.firstName })
+      res.render('index', { value: user.firstName })
     })
     .catch(error => console.log(error))
 })
