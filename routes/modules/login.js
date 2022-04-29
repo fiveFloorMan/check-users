@@ -16,10 +16,8 @@ router.post('/', (req, res) => {
     .lean()  
     .then(user => {
       if(user === null){
-        return console.log(`email or password is wrong`)
+        return res.render('login', {errorMessage: 'email or password is error'})
       }
-      console.log(`this man exist`)
-      console.log('user:', user)
       res.render('index',{ value : user.firstName })
     })
     .catch(error => console.log(error))
