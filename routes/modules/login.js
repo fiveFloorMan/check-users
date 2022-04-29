@@ -1,10 +1,11 @@
-// url = localhost:3000/
+// url = localhost:3000/login
 const express = require('express')
 const router = express.Router()
 const Users = require('../../models/user')
 
 // login 頁面
 router.get('/', (req, res) => {
+  
   res.render('login')
 })
 
@@ -18,7 +19,9 @@ router.post('/', (req, res) => {
       if (user === null) {
         return res.render('login', { errorMessage: 'email or password is error' })
       }
-      res.render('index', { value: user.firstName })
+      req.session.isLoggedIn = true
+      req.session.firstName = user.firstName
+      res.redirect('/')
     })
     .catch(error => console.log(error))
 })
